@@ -12,7 +12,7 @@ using System.IdentityModel.Tokens.Jwt;
 namespace DatingApp.API.Controllers
 {
     [Route("api/[controller]")]
-    //[ApiController]
+    [ApiController]
     public class AuthController : ControllerBase
     {
         private readonly IAuthRepository _repo;
@@ -58,7 +58,7 @@ namespace DatingApp.API.Controllers
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
-            .GetBytes(_config.GetSection("AppSettings: Token").Value));
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
